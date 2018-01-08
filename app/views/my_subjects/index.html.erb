@@ -1,0 +1,25 @@
+<% if @my_subjects.present? %>
+    <h1 align="center" >List of all Subjects</h1>
+  
+<% @my_subjects.each do |subject|  %>
+  <div class="container">
+
+    <div class="well col-md-4">
+      <%= subject.name %>
+      &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp
+      <%= link_to 'Delete Subject',my_subject_path(subject),method: :delete,data: {confirm: "Are you sure?"},class:" float btn btn-sm btn-danger"%>
+
+      <%= link_to 'Edit Subject',edit_my_subject_path(subject),class:"right-padding btn btn-sm btn-primary"%>
+      
+    </div>
+  </div>
+ 
+ <% end %>
+  <% else %>
+
+  <h1>Nothing to show! Please Add some!</h1>
+
+
+<%end%>
+

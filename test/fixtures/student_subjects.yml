@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  add_student: one
+  my_subject: one
+
+two:
+  add_student: two
+  my_subject: two

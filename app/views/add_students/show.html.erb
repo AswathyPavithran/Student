@@ -1,0 +1,39 @@
+  <h1 align="center">Student Details</h1>
+<div class="container">
+<div class="well col-md-4">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @add_student.name %>
+ </p>
+ <p>
+   <strong>Image:</strong>
+   <div class="img-circle">
+    <%= image_tag @add_student.image.url,class:"img-circle" %>
+  </div>
+  </p>
+  <% if @add_student.my_subjects.any? %>
+
+  <p>
+    <strong>Subjects Associated</strong>
+    <div class="well">
+    <ul> 
+    <% @add_student.student_subjects.each do |student_subject|%>
+      <li><strong><%=student_subject.my_subject.name %> :</strong>
+      <%=student_subject.marks %>
+      <%=link_to 'Add Marks',edit_student_subject_path(@add_student.id,:sub_id =>student_subject.my_subject_id),class:'btn btn-xs btn-warning'%>
+      
+      </li>
+    <% end %>
+    </ul>
+    </div>
+   </p>
+  <% end %>
+</div>
+</div>
+
+
+
+
+
+
