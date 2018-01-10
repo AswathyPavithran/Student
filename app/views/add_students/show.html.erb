@@ -16,14 +16,19 @@
 
   <p>
     <strong>Subjects Associated</strong>
-    <div class="well">
-    <ul> 
+    <div class="well col-md-12">
+    <ul class="listing"> 
     <% @add_student.student_subjects.each do |student_subject|%>
       <li><strong><%=student_subject.my_subject.name %> :</strong>
-      <%=student_subject.marks %>
-      <%=link_to 'Add Marks',edit_student_subject_path(@add_student.id,:sub_id =>student_subject.my_subject_id),class:'btn btn-xs btn-warning'%>
-      
+          <strong><%=student_subject.marks %></strong>
+           &nbsp &nbsp  &nbsp
+           <% if student_subject.marks.present? %>
+            <%=link_to 'Edit Marks',edit_student_subject_path(@add_student.id,:sub_id =>student_subject.my_subject_id),class:'btn btn-xs btn-warning'%>  
+           <% else %>
+            <%=link_to 'Add Marks',edit_student_subject_path(@add_student.id,:sub_id =>student_subject.my_subject_id),class:'btn btn-xs btn-warning'%>
+           <%end%>
       </li>
+      <li>  &nbsp &nbsp  &nbsp</li>
     <% end %>
     </ul>
     </div>

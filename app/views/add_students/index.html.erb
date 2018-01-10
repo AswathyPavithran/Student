@@ -6,25 +6,22 @@
 <% @add_student.each do |add_student|  %>
   <div class="container">
 
-    <div class="well col-md-4">
+    <div class="well col-md-5">
       <%= add_student.name %>
       &nbsp &nbsp &nbsp
 
-      <%= link_to 'View Profile',add_student_path(add_student),class:" right-padding btn btn-sm btn-primary " %>
+      <%= link_to 'View Profile',add_student_path(add_student),class:" right-padding btn btn-sm btn-success " %>
        &nbsp &nbsp &nbsp
       <%= link_to 'Delete Student',add_student_path(add_student),method: :delete,data: {confirm: "Are you sure?"},class:" btn btn-sm btn-danger"%>
        &nbsp &nbsp &nbsp
-
+       <%= link_to 'Edit Profile',edit_add_student_path(add_student),class:" btn btn-sm btn-primary"%>
+       &nbsp &nbsp &nbsp
       <%#= link_to 'Add Marks here' ,edit_student_subject_path(add_student.my_subjects),class:"left-padding btn btn-sm btn-primary" %> 
-      
-
     </div>
   </div>
  
  <% end %>
   <% else %>
-
   <h1>No students are there in your list</h1>
-
-
 <%end%>
+

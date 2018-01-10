@@ -9,10 +9,7 @@ Rails.application.routes.draw do
   resources :student_subjects ,only:[:edit,:update,:show,:index]
 
   get 'student' , to: 'add_students#search'
-
-
- 
-
- 
+  get 'subject' , to: 'my_subjects#search_subject'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

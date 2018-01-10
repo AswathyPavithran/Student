@@ -1,13 +1,15 @@
 class AddStudentsController < ApplicationController
+  
 
 	def index
      @add_student=AddStudent.all
-     end
+
+  end
      
 
 	def new
 		@add_student= AddStudent.new
-
+    @my_subjects=MySubject.all
 	end
 
 	def create
@@ -18,8 +20,24 @@ class AddStudentsController < ApplicationController
        else
        	render 'new'
        end
-	end
-     
+  end
+	
+
+  def edit
+    @add_student=AddStudent.find(params[:id])
+     @my_subjects=MySubject.all
+  end
+  
+  def update
+     @add_student=AddStudent.find(params[:id])
+     if @add_student.update(student_params)
+       flash[:success]="Updated successfully"
+       redirect_to add_student_path(@add_student)
+     else
+       render 'edit'
+     end
+  end
+
   def show
     # debugger
      @add_student=AddStudent.find(params[:id])
@@ -29,23 +47,20 @@ class AddStudentsController < ApplicationController
 
   end
      
-  def search
+  def search  
     if params[:search_param].blank?
       flash[:danger]="You have entered an empty string"
     else
-    @add_students=AddStudent.where(name: params[:search_param])
-    respond_to do |format|    
-       format.js {render partial:'add_students/result'}
-     end
+       @add_students=AddStudent.where(name: params[:search_param])
+       flash.now[:danger]="No students match in this search" if @add_students.blank?
     end
- end
-
+  end
+      
   def destroy
        @add_student=AddStudent.find(params[:id])
        @add_student.destroy       
        flash[:danger]="This profile is successfully deleted" 
        redirect_to add_students_path    	
-
   end
 
 	private

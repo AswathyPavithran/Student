@@ -1,0 +1,31 @@
+<h1 align="center">Subjects</h1>
+<h3>Search for Subjects</h3>
+
+<script type="text/javascript">
+	function getFunction()
+	{
+		 var x=document.getElementById("search_param").value;
+		 alert(x);
+	}
+
+</script>
+
+<div id ="student-lookup">
+  <%= form_tag subject_path,method: :get,id: "student-lookup-form" do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param ,params[:search_param], placeholder:"Enter name of subject",autofocus: true,class:"form-control search-box input-lg" %>
+    </div>
+  <div class="col-md-2">
+    <%= button_tag(type: :submit, class: "btn btn-lg btn-success",:onclick=>"getFunction()") do%>
+      <i class="fa fa-search"></i> Search
+    <% end %>
+  </div>
+  </div>
+  <% end %>
+</div>
+
+<div id="results">
+  <%= render 'my_subjects/result'%>
+</div>
+

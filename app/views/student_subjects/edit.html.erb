@@ -1,9 +1,13 @@
 
-<%= form_for(@student_subjects) do |f| %>
- 
-  <%= f.label :marks %>
-  <%= f.text_field :marks %>
 
-  <%= f.submit "Submit" %>
- 
-<% end %>
+<%= render 'shared/errors' ,obj:@student_subjects %>
+<h1>Add Marks</h1>
+<div class="container">
+<div class="well">
+  <%= form_for(@student_subjects) do |f| %>
+    <%= f.label :marks %>
+    <%= f.text_field :marks %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
+</div>  

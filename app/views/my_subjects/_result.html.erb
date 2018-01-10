@@ -1,0 +1,37 @@
+
+
+<% if @my_subjects.present? %>
+ <% if @my_subjects.size > 0 %>
+   
+   <div id="search-results" class="well results-block col-md-10">
+     <div class="results-block">
+       <table class=" col-md-12">
+         <tbody>
+           <% @my_subjects.each do |subject|%>
+             <tr>
+             <td><strong>Name: </strong> <%=subject.name%></td>
+             &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+             <% if subject.student_subjects.present? %>
+               <td><strong>Students:</strong>
+               <% subject.student_subjects.each do |student|%>
+                 <%if student.marks.present? %>
+                   <strong><%= student.add_student.name %> :</strong>
+                   <%= student.marks %>
+                 <%else %>
+                   <strong><%= student.add_student.name %> :</strong>
+                   <strong style="color:red">No Marks given!</strong>
+                 <% end %>
+                 <% end %>
+             
+               <% else %>
+               <td><strong style="color:red"> No students associated with this subject </strong></td>
+              <%end%>
+             </td>   
+             </tr>
+           <% end %>
+         </tbody> 
+       </table>
+     </div>
+   </div>  
+  <% end %>
+<% end %>

@@ -1,24 +1,20 @@
 <h1 align="center">Students</h1>
-
 <h3>Search for Students</h3>
 
-<div id ="student-lookup">
 
-<%= form_tag student_path,method: :get, id: "student-lookup-form" do %>
-<div class="form-group row no-padding text-center col-md-12">
-  <div class="col-md-10">
-    <%= text_field_tag :search_param ,params[:search_param], placeholder:"Enter name of student",autofocus: true,class:"form-control search-box input-lg" %>
-  </div>
+  <%= form_tag student_path,method: :get do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param ,params[:search_param], placeholder:"Enter name of student",autofocus: true,class:"form-control search-box input-lg" %>
+    </div>
   <div class="col-md-2">
     <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do%>
-    
-    <i class="fa fa-search"></i> Search
-
+      <i class="fa fa-search"></i> Search
     <% end %>
-    </div>
   </div>
-<% end %>
-</div>
+  </div>
+  <% end %>
+
 
 <div id="results">
   <%= render 'add_students/result'%>

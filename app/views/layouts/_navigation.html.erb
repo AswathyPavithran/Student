@@ -1,5 +1,4 @@
 <div class="navbar navbar-default navbar-static-top">
-
       <div class="container">
       <%= link_to 'Student Mangement',root_path,class:"navbar-brand"%>
       <%if current_admin%>
@@ -11,24 +10,21 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "My Profile",edit_admin_registration_path(current_admin)  %></li>
-
-          
-                   <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
-           <ul class="dropdown-menu">
-            
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
+            <ul class="dropdown-menu">
               <li><%= link_to "Add Students",new_add_student_path%></li>
-            <li><%= link_to "Add Subjects", new_my_subject_path %></li>
-
-            <li><%= link_to "View all Students",add_students_path%></li>
-            <li><%= link_to'View all Subjects',my_subjects_path%></li>
-            <li><%= link_to'Reports',student_path%></li>
-
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
+              <li><%= link_to "Add Subjects", new_my_subject_path %></li>
+              <li><%= link_to "View all Students",add_students_path%></li>
+              <li><%= link_to'View all Subjects',my_subjects_path%></li>
+            </ul>
+          </li>
+           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to'Search by Student',student_path%></li>
+              <li><%= link_to'Search by Subject',subject_path%></li>
+            </ul>
           </li>
            </ul>
 

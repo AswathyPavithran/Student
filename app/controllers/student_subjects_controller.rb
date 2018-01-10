@@ -11,10 +11,13 @@ def update
    # debugger
 	#add_student=AddStudent.find(params[:id])
 	#my_subject=MySubject.find(params[:sub_id])
+   
 	@student_subjects=StudentSubject.find(params[:id])
 	if @student_subjects.update(mark_params)
       flash[:success]="Saved Successfully!"
-      redirect_to add_students_path
+      redirect_to add_students_path(@student_subjects)
+   else
+      render 'edit'
 	end
 end
 
@@ -27,7 +30,7 @@ end
 
 private
 def mark_params
-params.require(:student_subject).permit(:marks)
+  params.require(:student_subject).permit(:marks)
 
 end
 

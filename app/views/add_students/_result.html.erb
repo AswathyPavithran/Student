@@ -1,35 +1,35 @@
-<% if params[:action] == 'student' %>
-   <div class="results_block">
-   <%= bootstrap_flash %>
-   </div>
-<% end %>
 
 <% if @add_students %>
- <% if @add_students.size>0 %>
- <div id="search-results" class="well results-block col-md-10">
- <div class="results-block">
-   <table class="search-results-table col-md-12">
+ <% if @add_students.size > 0 %>
+ 
+   <div id="search-results" class="well results-block col-md-10">
+   <div class="results-block">
+   <table class=" col-md-12">
      <tbody>
        <% @add_students.each do |add_student|%>
-       <tr>
-        <td><strong>Name: </strong> <%=add_student.name%></td>
-        <td><strong>Image: </strong> <%= image_tag add_student.image.url,class:"img-circle" %></td>
-        <td><strong>Subjects:</strong>
-
-        <% add_student.my_subjects.each do |subject|%>
-        <%= subject.name %>
-        <% end %>
-
-        </td>
-      <!--<td><strong>Profile: </strong> <%#= link_to 'View Profile',user_path(user), class:"btn btn-xs btn-success"%> -->
-      </tr>
-     <% end %>
-    </tbody> 
-  </table>
+       <tr><td><strong>Name: </strong> <%=add_student.name%></td></tr>
+       <tr><td><strong>Image: </strong> <%= image_tag add_student.image.url,class:"img-circle" %></td></tr>
+       <tr><td><strong>Subjects and Marks Associated:</strong>
+       <ul >
+         <% add_student.student_subjects.each do |subject|%>
+           <% if subject.my_subject.present?%>
+             <li><%= subject.my_subject.name %>
+           <%else %>
+             <li><strong style="color:red">No subjects associated </strong>
+           <%end %>
+           <% if subject.marks.present? %>
+             <%= subject.marks %></li>
+           <%else%>
+              <strong style="color:red">Marks is not assigned! </strong></li>
+           <% end %>   
+         <% end %>
+         </ul>
+         </td>   
+       </tr>
+       <% end %>
+     </tbody> 
+   </table>
   </div>
-  <% end %>
-
-<% else %>
-<div class="well col-md-8 ">No students associated with this name</div>
+  </div>  
 <% end %>
-</div>
+<% end %>
