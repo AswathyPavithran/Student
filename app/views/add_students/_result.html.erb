@@ -1,10 +1,15 @@
+<% if params[:action]=='search'%>
+<div class='results-block'>
+  <%= bootstrap_flash%>
+</div>
+<% end %>
 
 <% if @add_students %>
  <% if @add_students.size > 0 %>
  
    <div id="search-results" class="well results-block col-md-10">
    <div class="results-block">
-   <table class=" col-md-12">
+   <table class="table table-hover">
      <tbody>
        <% @add_students.each do |add_student|%>
        <tr><td><strong>Name: </strong> <%=add_student.name%></td></tr>
@@ -13,7 +18,7 @@
        <ul >
          <% add_student.student_subjects.each do |subject|%>
            <% if subject.my_subject.present?%>
-             <li><%= subject.my_subject.name %>
+             <li><%= subject.my_subject.name %> ::
            <%else %>
              <li><strong style="color:red">No subjects associated </strong>
            <%end %>

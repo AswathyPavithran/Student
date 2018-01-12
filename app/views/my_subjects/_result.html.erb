@@ -1,4 +1,9 @@
 
+<% if params[:action]=='search_subject'%>
+<div class='results-block'>
+  <%= bootstrap_flash%>
+</div>
+<% end %>
 
 <% if @my_subjects.present? %>
  <% if @my_subjects.size > 0 %>

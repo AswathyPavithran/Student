@@ -1,7 +1,7 @@
 class MySubjectsController < ApplicationController
     
     def index
-      @my_subjects=MySubject.all
+      @my_subjects=MySubject.paginate(page: params[:page],per_page: 3)
     end
 
 	def new
@@ -40,8 +40,16 @@ class MySubjectsController < ApplicationController
       @my_subjects=MySubject.where(name: params[:search_param])
       flash.now[:danger]="No subjects match in this search" if @my_subjects.blank?
     end
+      respond_to do |format|
+      format.js {render partial: 'my_subjects/result'}
+       end  
   end
 
+  # def search_my_subject
+  # debugger
+  #   h= {name: "achu" ,m1: "34" ,m2: "45"}
+    
+  # end
 	def show
       @my_subjects=MySubject.find(params[:id])
 	end
@@ -60,3 +68,5 @@ class MySubjectsController < ApplicationController
 	end
 
 end
+
+

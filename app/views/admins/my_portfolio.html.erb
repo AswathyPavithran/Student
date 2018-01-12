@@ -1,7 +1,30 @@
-<h1 align="center">
 
-This is login Page 
 
-<%= link_to "logout", destroy_admin_session_path, method: :delete %>
 
-</h1>
+<h1 align="center">Subjects</h1>
+<h3>Search for Subjects</h3>
+
+
+
+<div id ="student-lookup">
+  <%= form_tag subject_path,method: :get,id: "student-lookup-form", remote: true do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param ,params[:search_param], placeholder:"Enter name of subject",autofocus: true,class:"form-control search-box input-lg" %>
+    </div>
+  <div class="col-md-2">
+    <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do%>
+      <i class="fa fa-search"></i> Search
+    <% end %>
+  </div>
+  </div>
+  <% end %>
+</div>
+
+<div id="results">
+  <%= render 'my_subjects/result'%>
+</div>
+
+
+
+

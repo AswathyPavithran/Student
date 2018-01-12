@@ -1,12 +1,14 @@
 
 
 <%= render 'shared/errors' ,obj:@student_subjects %>
-<h1>Add Marks</h1>
+<h2 align="center"> Marks for <%= @add_student.name%> , Subject: <%= @my_subject.name%>  </h2>
 <div class="container">
 <div class="well">
   <%= form_for(@student_subjects) do |f| %>
     <%= f.label :marks %>
     <%= f.text_field :marks %>
+    <%= hidden_field_tag :student_id, @add_student.id%>
+    <%= hidden_field_tag :subject_id, @my_subject.id%>
     <%= f.submit "Submit" %>
   <% end %>
 </div>

@@ -1,12 +1,10 @@
 class AddStudentsController < ApplicationController
   
-
 	def index
-     @add_student=AddStudent.all
+     @add_student=AddStudent.paginate(page: params[:page],per_page: 3)
 
   end
      
-
 	def new
 		@add_student= AddStudent.new
     @my_subjects=MySubject.all
@@ -22,7 +20,6 @@ class AddStudentsController < ApplicationController
        end
   end
 	
-
   def edit
     @add_student=AddStudent.find(params[:id])
      @my_subjects=MySubject.all
@@ -49,11 +46,14 @@ class AddStudentsController < ApplicationController
      
   def search  
     if params[:search_param].blank?
-      flash[:danger]="You have entered an empty string"
+      flash.now[:danger]="You have entered an empty string"
     else
        @add_students=AddStudent.where(name: params[:search_param])
        flash.now[:danger]="No students match in this search" if @add_students.blank?
     end
+       respond_to do |format|
+         format.js {render partial: 'add_students/result'}
+       end  
   end
       
   def destroy
@@ -71,3 +71,4 @@ class AddStudentsController < ApplicationController
 
 
 end
+
